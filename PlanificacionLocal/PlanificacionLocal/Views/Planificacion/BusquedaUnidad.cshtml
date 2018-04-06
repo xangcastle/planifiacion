@@ -1,0 +1,33 @@
+﻿<script src="~/Scripts/Creados/busqueda/BLocales.js"></script>
+<script src="~/Scripts/Creados/Actividad/OpeMov.js"></script>
+<div style="text-align:left">
+    <label>Descripción de la unidad</label>
+    <div class="input-group" style="width:95%">
+        <span class="input-group-addon icon-close" onclick="CancelBusqUnidadId()" id="btnloadbunis" style="cursor:pointer">
+            <img style="width:20px; display:none" src="../Content/images/loading-ico.gif" />
+        </span>
+        <input type="text" id="DescripUndsid" class="form-control" style="width:100%; max-width:100%" maxlength="250" value="" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" onclick="ListarUnidadesId()">
+                <span class="icon2-search"></span>
+                &nbsp;Buscar
+            </button>
+            <button type="button" class="btn btn-danger" onclick="SalirBusquedaUnidad()">
+                <span class="icon2-cross"></span>
+                Cerrar
+            </button>
+        </span>
+    </div>
+    <br />
+    <div id="modal-resultlistaUnidad" class="ebody_table1">
+        <table class="webgrid-table ocultar" style="width:100%" id="LstBusqUnidadId">
+            <thead class="webgrid-header">
+                <tr>
+                    <th scope="col">Descripción</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

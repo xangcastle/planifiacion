@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>WPF.ImageFromFont.Tool</id>
+    <version>1.0.0</version>
+    <title>WPF ImageFromFont Tool</title>
+    <authors>Sistemas Integrales Ltda.</authors>
+    <owners>Sistemas Integrales Ltda.</owners>
+    <projectUrl>http://www.codeproject.com/Tips/634540/Using-Font-Icons</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contiene xaml extensions para renderizar iconos vectoriales de font awesome a partir del text unicode del caracter. Tomado desde: http://www.codeproject.com/Tips/634540/Using-Font-Icons</description>
+    <summary>Contiene xaml extensions para renderizar iconos vectoriales de font awesome a partir del text unicode del caracter.
+
+Tomado desde: http://www.codeproject.com/Tips/634540/Using-Font-Icons</summary>
+    <copyright>Le Sourcier</copyright>
+    <language>es-CO</language>
+    <tags>WPF Font Awesom XAML Extension from Unicode</tags>
+  </metadata>
+</package>

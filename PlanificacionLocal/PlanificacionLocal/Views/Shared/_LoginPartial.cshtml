@@ -1,0 +1,182 @@
+﻿@using Microsoft.AspNet.Identity
+@using PlanificacionLocal.Controllers
+@using PlanificacionLocal.Models
+@if (Request.IsAuthenticated)
+{
+    <body>
+        <div class="content-wrappermenu">
+            <section id="login">
+                <ul>
+                    <li class="pestaña" style="text-decoration:none">
+                        <span class="icon2-user" style="font-size:20px"></span>
+                        @Html.Name("Hola"+' '+"(" + User.Identity.Name + ")") 
+                    </li>
+                    <li></li>
+                    <li class="pestaña">
+                        <span class="icon2-cog" style="font-size:20px"></span>
+                        <a class="username" href="/Account/Manage">Cambiar contraseña</a>
+                    </li>
+
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", novalidate = "novalidate" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <li></li>
+                        <li class="pestaña" style="">
+                            <span class="icon2-user" style="font-size: 20px; text-decoration: dashed !Important; margin-right: -8px"></span>
+                            <span style="text-decoration: underline;">
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+                            </span>
+                        </li>
+                    }
+                </ul>
+            </section>
+        </div>
+        <header></header>
+        <div class="content-wrappermenu">
+        </div>
+        <div class="content-wrappermenu">
+            <div class="float-left">
+                <div> 
+                    <ul   class="topmenu" id="css3menu1">
+                    @{
+                        ControlDeUsuarioContext db = new ControlDeUsuarioContext();
+                        AccesoController ac = new AccesoController();
+                        Usuario oUsua = db.Usuarios.DefaultIfEmpty(null).FirstOrDefault(x => x.NombreDeUsuario == User.Identity.Name);
+                        List<OpcionMenu> ListaPadre = ac.ListarPadres(oUsua.Id);
+                        List<OpcionMenu> LstHijos, LstSubHijos, LstSubHijos1;
+
+                        if (ListaPadre.Any())
+                        {
+                            foreach (OpcionMenu k in ListaPadre)
+                            {
+                                LstHijos = ac.ListarHijos(k.Id, oUsua.Id);
+                                <li class="topmenu">
+                                    <a data-link="" href="@Url.Action(k.DescripcionVista,k.DescripcionControlador)"><spam>@k.Descripcion</spam></a>
+                                    @if (LstHijos.Any())
+                                    {
+                                        <ul>
+                                            @foreach (OpcionMenu H in LstHijos)
+                                            {
+                                                LstSubHijos = ac.ListarHijos(H.Id, oUsua.Id);
+                                                <li>
+                                                    <a data-link="" href="@Url.Action(H.DescripcionVista,H.DescripcionControlador)"><spam>@H.Descripcion</spam></a>
+                                                    @if (LstSubHijos.Any())
+                                                    {
+                                                        <ul>
+                                                            @foreach (OpcionMenu J in LstSubHijos)
+                                                            {
+                                                                LstSubHijos1 = ac.ListarHijos(J.Id, oUsua.Id);
+                                                                <li>
+                                                                    <a data-link="" href="@Url.Action(J.DescripcionVista,J.DescripcionControlador)"><spam>@J.Descripcion</spam></a>
+                                                                    @if (LstSubHijos1.Any())
+                                                                    {
+                                                                        <ul>
+                                                                            @foreach (OpcionMenu L in LstSubHijos1)
+                                                                            {
+                                                                                <li>
+                                                                                    <a data-link="" href="@Url.Action(L.DescripcionVista,L.DescripcionControlador)"><spam>@L.Descripcion</spam></a>
+                                                                                </li>
+                                                                            }
+                                                                        </ul>
+                                                                    }
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </li>
+                            }
+                          }
+                        }  
+                    </ul>                      
+                </div>
+                <script></script>
+            </div>
+        </div>
+        <div class="content-wrappermenu">
+            <section class="content-wrappermenu main-content clear-fix"></section>
+        </div>
+    </body>
+}
+else
+{
+    <body>
+        <div class="content-wrappermenu">
+            <section id="login">
+                <ul>
+                    <li class="pestaña" style="">
+                        <span class="icon2-user" style="font-size:20px;text-decoration:dashed !Important;margin-right:-8px"></span>
+                        <span style="text-decoration:underline;">
+                            <a href="/Account/Login" id="loginLink">Iniciar Cesión</a>
+                        </span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <header></header>
+        <div class="content-wrappermenu">
+        </div>
+        <div class="content-wrappermenu">
+        </div>
+        <div class="content-wrappermenu">
+            <section class="content-wrappermenu main-content clear-fix"></section>
+        </div>
+    </body>
+}
+@*<header></header>
+<div class="content-wrappermenu">
+</div>
+<div class="content-wrappermenu">
+    <div class="float-left">
+        <div>
+            <ul class="topmenu" id="css3menu1">
+                <li class="topmenu">
+                    <a href="/Home/Index">
+                        <spam>Inicio</spam>
+                    </a>
+                </li>
+                <li class="topmenu">
+                    <a class="op-1" href="#"><spam>Catálogos</spam></a>
+                    <ul class="sub-menu">
+                        <li><a href="~/TiposActividad/Index"><spam>Tipo Actividad</spam></a></li>
+                        <li><a href="~/TiposLocal/Index"><spam>Tipo Local</spam></a></li>
+                        <li><a href="~/Unidades/Index"><spam>Unidad</spam></a></li>
+                        <li><a href="~/Locales/Index"><spam>Local</spam></a></li>
+                    </ul>
+                </li>
+                <li class="topmenu">
+                    <a class="op-1" href="#"><spam>Planificación De Local</spam></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="~/Planificacion/PlanificarActividad"><spam>Asignación de Actividad</spam></a>
+                        </li>     
+                        <li>
+                            <a href="~/Planificacion/CalendarioDeActividades"><spam>Calendario de actividades</spam></a>
+                        </li>                  
+                    </ul>
+                </li>                
+                <li class="topmenu">
+                    <a class="op-1" href="#"><spam>Reportes</spam></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="~/Informes/FrecuenciaPretamo"><spam>Frecuencia Prestamo Por local</spam></a>
+                        </li>
+                        <li>
+                            <a href="~/Informes/HorasConsumoDeLocal"><spam>Horas Consumo Por Local</spam></a>
+                        </li>
+                        <li>
+                            <a href="~/Informes/ActividadesPorTipo"><spam>Actividades Por Tipo</spam></a>
+                        </li> 
+                     </ul>
+                </li>
+            </ul>
+        </div>
+        <script></script>
+    </div>
+</div>
+<div class="content-wrappermenu">
+    <section class="content-wrappermenu main-content clear-fix"></section>
+</div>*@

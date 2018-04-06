@@ -1,0 +1,16 @@
+﻿.ImagenCarga 
+{
+    background-color: rgba(0, 0, 0, 0.6);
+    background-image: url('../../Utileria/Images/cargando.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 8%;
+    display: none;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}

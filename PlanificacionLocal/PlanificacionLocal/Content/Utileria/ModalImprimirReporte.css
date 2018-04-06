@@ -1,0 +1,416 @@
+﻿
+.tabla-btnPrint 
+{
+    display:inline-block;
+    width:6px;
+}
+
+
+.div-btnPrint 
+{
+    display:inline-block;
+    font-family:Verdana;
+    font-size:8pt;
+    vertical-align:inherit;
+}
+
+
+.ocultar-iframe 
+{
+    display:none;
+}
+
+
+.btn-Print 
+{
+    cursor:pointer;
+}
+
+
+.img-btnPrint 
+{
+    margin-top:4px
+}
+
+
+.HighlightDiv img 
+{
+        background-color: transparent;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        cursor: default;
+}
+
+
+.HighlightDiv:hover img
+ {
+    background-color: #DDEEF7;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-color: #336699;
+    border-right-color: #336699;
+    border-bottom-color: #336699;
+    border-left-color: #336699;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    cursor: pointer;
+}
+
+
+.vista-actualizacion 
+{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3C727070, endColorstr=#3C727070);
+}
+
+
+.img-impresora 
+{
+    display:inline-block;
+    background-image:url("../Content/images/VistaPreviaImpresion.png");
+    /*background-image:url("../images/ReportPrinter.png");*/
+    background-repeat:no-repeat;
+    height: 122px;
+    width: 130px;
+}
+
+
+.gif-imprimiendo 
+{
+    display:inline-block;
+    background-image:url("../Content/images/VistaPreliminar.gif");
+    /*background-image:url("../images/ReportPrinterText.gif");*/
+    background-repeat:no-repeat;
+    height: 65px;
+    width: 260px;
+    position: relative;
+    bottom: 35px;
+}
+
+
+.contenedor-gif 
+{
+    width: 100%;
+    text-align:center;
+    margin-top: 200px;
+}
+
+
+.textofirefox 
+{
+    text-align: center;
+    font-size: 35px;
+    display:none;
+}
+
+
+.PopupPDF 
+{
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color:rgba(255, 255, 255, 0.49);
+    overflow:hidden;
+    position:absolute;
+    text-align:center;
+    top:0;
+    left:0;
+    padding-top:20px;
+}
+
+
+.imgSeñalizacion {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    background-image: url("../Content/images/Apuntador.png");
+    background-repeat: no-repeat;
+    background-size: 100px;
+    position: relative;
+    bottom: 322px;
+    margin-left: 3px;
+}
+
+
+.ayudaimpresion 
+{
+    position: relative;
+    width:242px;
+    text-align:justify;
+    bottom: 340px;
+    display: inline-block;
+}
+
+
+.tamañoiframPDF 
+{
+    width:400px; 
+    height:400px
+}
+
+
+.contd-pdf {
+    background-color: #A6BDCE;
+    width: 800px;
+    margin: 0 auto;
+    border: 3px solid #334969;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow: 8px 8px 2px rgba(0,0,0,0.7);
+}
+
+
+.contd-iframe-pdf 
+{
+    margin-top: 35px;
+    padding: 10px;
+}
+
+
+.btn-cerrar-iframe-pdf {
+    display: block;
+    float: right;
+    font-size: 25px;
+    margin-right: 6px;
+    margin-top: 2px;
+    color: #334281;
+    cursor:pointer;
+}
+
+
+.btn-cerrar-iframe-pdf:hover
+{
+    color:white;
+}
+
+/*.tabla-btnPrint 
+{
+    display:inline-block;
+    width:6px;
+}
+
+
+.div-btnPrint 
+{
+    display:inline-block;
+    font-family:Verdana;
+    font-size:8pt;
+    vertical-align:inherit;
+}
+
+
+.ocultar-iframe 
+{
+    display:none;
+}
+
+
+.btn-Print 
+{
+    cursor:pointer;
+}
+
+
+.img-btnPrint 
+{
+    margin-top:4px
+}
+
+
+.HighlightDiv img 
+{
+        background-color: transparent;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        cursor: default;
+}
+
+
+.HighlightDiv:hover img
+ {
+    background-color: #DDEEF7;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-color: #336699;
+    border-right-color: #336699;
+    border-bottom-color: #336699;
+    border-left-color: #336699;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    cursor: pointer;
+}
+
+
+.vista-actualizacion 
+{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3C727070, endColorstr=#3C727070);
+}
+
+
+.img-impresora 
+{
+    display:inline-block;
+    background-image:url("../images/VistaPreviaImpresion.png");
+    background-image:url("../images/ReportPrinter.png");
+    background-repeat:no-repeat;
+    height: 122px;
+    width: 130px;
+}
+
+
+.gif-imprimiendo 
+{
+    display:inline-block;
+    background-image:url("../images/VistaPreliminar.gif");
+    background-image:url("../images/ReportPrinterText.gif");
+    background-repeat:no-repeat;
+    height: 65px;
+    width: 260px;
+    position: relative;
+    bottom: 35px;
+}
+
+
+.contenedor-gif 
+{
+    width: 100%;
+    text-align:center;
+    margin-top: 200px;
+}
+
+
+.textofirefox 
+{
+    text-align: center;
+    font-size: 35px;
+    display:none;
+}
+
+
+.PopupPDF 
+{
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background-color:rgba(255, 255, 255, 0.49);
+    overflow:hidden;
+    position:absolute;
+    text-align:center;
+    top:0;
+    left:0;
+    padding-top:20px;
+}
+
+
+.imgSeñalizacion {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    background-image: url("../images/Apuntador.png");
+    background-repeat: no-repeat;
+    background-size: 100px;
+    position: relative;
+    bottom: 322px;
+    margin-left: 3px;
+}
+
+
+.ayudaimpresion 
+{
+    position: relative;
+    width:242px;
+    text-align:justify;
+    bottom: 340px;
+    display: inline-block;
+}
+
+
+.tamañoiframPDF 
+{
+    width:400px; 
+    height:400px
+}
+
+
+.contd-pdf {
+    background-color: #A6BDCE;
+    width: 800px;
+    margin: 0 auto;
+    border: 3px solid #334969;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow: 8px 8px 2px rgba(0,0,0,0.7);
+}
+
+
+.contd-iframe-pdf 
+{
+    margin-top: 35px;
+    padding: 10px;
+}
+
+
+.btn-cerrar-iframe-pdf {
+    display: block;
+    float: right;
+    font-size: 25px;
+    margin-right: 6px;
+    margin-top: 2px;
+    color: #334281;
+    cursor:pointer;
+}
+
+
+.btn-cerrar-iframe-pdf:hover
+{
+    color:white;
+}*/
+
+

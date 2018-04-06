@@ -1,0 +1,68 @@
+﻿#Principal {
+    font: 100 16px Tahoma Arial Time New Romans;
+    margin: 0 auto;
+    width: 930px;
+}
+#Prinipal .titulo_ec {
+    background-color: #6D7B8C;
+    color: #E8E8E8;
+}
+#Principal .titulo_ec {
+    color: #EFEFEF;
+    text-align: center;
+    border: 2px dotted #C2C4C5;
+    background-color: #4A8AA6;
+    padding: 10px 0px;
+    border-radius: 5px;
+}
+.leyenda {
+    text-align: center;
+    border-style: ridge;
+    color: white;
+    background-color: rgb(0, 85, 141);
+    font-weight: 700;
+    font-size: medium;
+    width: auto;
+    overflow:hidden;
+    padding: 10px 0px;
+    text-decoration:none;
+    box-shadow: 0px 0px 6px 3px #6DA6A2 inset;
+}
+.botom{
+
+    display: inline-flexbox;
+    border-style: groove;
+    border-radius: 5px;
+    padding: 1px 10px 1px 10px;
+    box-shadow: 0px 0px 3px 1px black;
+    border-color: #EEEEEE;
+    width: 610px;
+    background-color: #CACACA;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    background-image: url(../Utileria/Images/agregar.gif);
+    background-position: 5px center;
+    background-repeat: no-repeat;
+    padding: 3px 30px;
+   
+}
+.cont_filtro input[type=button]{
+
+    display: inline-flexbox;
+    border-style: groove;
+    border-radius: 5px;
+    padding: 1px 10px 1px 10px;
+    box-shadow: 0px 0px 3px 1px black;
+    border-color: #EEEEEE;
+    width: 610px;
+    background-color: #CACACA;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    background-image: url(../Utileria/Images/Detallar.jpg);
+    background-position: 5px center;
+    background-repeat: no-repeat;
+    padding: 3px 30px;
+   
+}

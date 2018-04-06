@@ -1,0 +1,66 @@
+﻿@model PlanificacionLocal.Models.LoginViewModel
+@{
+    ViewBag.Title = "Iniciar sesión";
+}
+<body>
+    <div class="content-wrapper">
+        <section class="content-wrappercontenido main-content clear-fix">
+            <div class="ubicar">
+                <div class="titulologin" style="font-family:Verdana;padding-top:5px;color:black;font-size:18px">
+                    Iniciar sesión
+                </div>
+                <section id="loginForm1" class="borderlogin">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                    {
+                        <style type="text/css">
+                            input[type="text"] {
+                                width: 200px;
+                            }
+
+                            input[type="password"] {
+                                width: 200px;
+                            }
+                        </style>
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <br />
+                        <fieldset>
+                            <legend></legend>
+                            <div style="text-align:left;padding-left:10px;font-family:Verdana;font-weight:bold">
+                                <div style="display:inline-block;width:38%;font-size:18px">
+                                    <span class="icon2-user"></span>
+                                    Usuario
+                                </div>
+                                <div style="display:inline-block;width:50%">
+                                    @Html.TextBoxFor(m => m.UserName)
+                                </div>
+                                <br />
+                                <div style="display:inline-block;width:38%;font-size:18px">
+                                    <span class="icon2-key2" style="font-size:18px"></span>
+                                    Contraseña
+                                </div>
+                                <div style="display:inline-block;width:50%">
+                                    @Html.PasswordFor(m => m.Password)
+                                </div>
+                                <div style="text-align:right;padding-right:25px;">
+                                </div>
+                                <div style="text-align:right;padding-right:25px;margin-top:5px">
+                                    <button class="icon2-enter btnIcon" type="submit" title="" style="border:1px solid #808080">
+                                        <span class="spBtn">Entrar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    }
+                </section>
+                <br />
+                <br />
+            </div>
+            <p></p>
+            <p></p>
+        </section>
+    </div>
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>FontAwesomeIcons</id>
+    <version>1.0.3</version>
+    <title>FontAwesomeIcons</title>
+    <authors>Md. Alim Ul Karim</authors>
+    <owners>Md. Alim Ul Karim</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contains latest FontAwesome less,css,fonts and few C# constants for FontAwesome.</description>
+    <summary>Contains latest FontAwesome less,css,fonts and few C# constants for FontAwesome.</summary>
+    <releaseNotes>Contains latest FontAwesome less,css,fonts and few C# constants for FontAwesome.</releaseNotes>
+    <language>en-US</language>
+    <tags>Developers Organism Font Awesome FontAwesome Awesome Icons Less Scss C# icons constants</tags>
+  </metadata>
+</package>

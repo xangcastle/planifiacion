@@ -1,0 +1,73 @@
+﻿@model PlanificacionLocal.ModelView.ReportesView.ActividadXTipoRangueada
+@{
+    ViewBag.Title = "Actividades Por Tipo";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("ROLRPTRO"))
+    {
+   <div class="content-wrapper">
+    <section class="content-wrappercontenido main-content clear-fix">
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/ImagenCarga.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-ui-1.9.1.custom.min.js"></script>
+        <link href="~/Content/themes/base/jquery-ui-1.7.1.custom.css" rel="stylesheet" />
+        <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+        <script src="~/Scripts/js/DatePicker-es.js"></script>
+        <script src="~/Scripts/js/datepicker.js"></script>
+        <link href="~/Content/Estilo/actividad/FrmV2.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/actividad/estiloFormV2.css" rel="stylesheet" />
+        <script src="~/Scripts/Creados/Actividad/JSFrm.js"></script>
+        <script src="~/Scripts/Creados/Reporte/ReportePlanificacion.js"></script>
+        <script src="~/Scripts/JSRaiz.js"></script>
+        <link href="~/Content/Estilo/actividad/Index.css" rel="stylesheet" />
+        <div class="panel panel-info" style="width: 730px;margin: 0 auto">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Reporte De Actividades Por Tipo</h3>
+            </div>
+            <div class="panel-body">
+                <div class="capa">
+                    <form method="post" id="frmActividadxTipo" target="_blank">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.25em 2em 0.25em 0em;">
+                                        <label>Tipo Actividad:</label>
+                                        <select class="form-control" style="width:350px;"  id="TipoActividadId" name="TipoActividadId"></select>
+                                        @*@Html.DropDownList("TipoActividadId", null, new { htmlAttributes = new { @class = "form-control" } })*@                                       
+                                    </td>
+                                    <td style="padding: 0.25em 2em 0.25em 0em;">
+                                        <label>Desde:</label>
+                                        @Html.EditorFor(model => model.Desde, new { htmlAttributes = new { @class = "form-control", placeholder = "Seleccione una fecha", style = "width:140px;" } })
+                                    </td>
+                                    <td style="padding: 0.25em 2em 0.25em 0em;">
+                                        <label>Hasta:</label>
+                                        @Html.EditorFor(model => model.Hasta, new { htmlAttributes = new { @class = "form-control", placeholder = "Seleccione una fecha", style = "width:140px;" } })
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="text-center">
+                    <input title="Vista Previa del Documento" type="button" value="Cargar Documento" name="previaRpt" id="previaRpt" class="btnClass" style="font-size:13px; font-weight: bold; background-image:url('../Content/Images/previa.png'); padding-left: 25px;" onclick="ImprimirActXTipo()">
+                </div>
+            </div>
+        </div>
+        <div class="mensajes_confirmar" data-accion="0"></div>
+        <div class="mensajes_anunciar" data-accion="0"></div>
+        <div class="mensaje_esperar" data-accion="0"></div>
+        <div id="ContenedorBloqueo" class="ImagenCarga" style="display: none;"></div>
+        <div class="loading_body">
+            <div></div>
+        </div>
+        <p></p>
+        <p></p>
+    </section>
+</div>  
+}
+}
+
+
+

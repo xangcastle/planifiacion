@@ -1,0 +1,265 @@
+﻿@model PlanificacionLocal.ModelView.ActView
+@{
+    ViewBag.Title = "Edición De Atividades";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("ROLMDFI"))
+    {
+       <link href="~/Content/Estilo/actividad/Layout.css" rel="stylesheet" />
+        <script src="~/Scripts/Creados/Actividad/OpeMov.js"></script>
+        <script src="~/Scripts/Jquery.LimiteCaracter_Plugin.js"></script>
+        <div class=".mensajesp_anunciarVal" data-accion="0"></div>
+   <!-- Modal -->
+        <div id="gridSystemModalLocalesid" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLocalesid" aria-hidden="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="border-radius: 8px; border: 1px solid #CBCBCB; margin: 50px auto; overflow: hidden;">
+                    <div class="modal-header">
+                        <button type="button" class="close" onclick="SalirBusquedaLocal()" aria-label="Close">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                        <h4 class="modal-title" id="gridModalLabel">Búsqueda De Locales</h4>
+                    </div>
+                    <div class="modal-body" id="BsqLocid">
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div><!-- /.modal-dialog -->
+            <!-- Modal -->
+        <div id="gridSystemModalUnidades" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalUnidades" aria-hidden="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="border-radius: 8px; border: 1px solid #CBCBCB; margin: 50px auto; overflow: hidden;">
+                    <div class="modal-header">
+                        <button type="button" class="close" aria-label="Close" onclick="SalirBusquedaUnidad()">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                        <h4 class="modal-title" id="gridModalLabel">Busqueda De Unidades</h4>
+                    </div>
+                    <div class="modal-body" id="BsqUnid">
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div><!-- /.modal-dialog -->
+        <div class="form-horizontal">
+            <div class="panel panel-primary" style="width:0 auto;margin:auto;border-color:#337ab7;">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center" id="DscActLocId"></h3>
+                </div>
+                <div class="panel-body">
+                    <form id="FormActividad" class="form-horizontal" style="margin: 0 auto; width: 840px;">
+                        @Html.ValidationSummary(true)
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="col-lg-8 col-md-8 col-sm-8">
+                                        <div>
+                                            <div class="form-group" style="width:310px;">
+                                                <label>Unidad Solicitante: </label>
+                                                <div class="input-group" style="margin-bottom: 0px !important; width: 95%">
+                                                    <input type="text" class="BusqInfo form-control" name="DescripUnidadid" id="DescripUnidadid" style="max-width:100%" readonly="readonly" />
+                                                    <input type="hidden" id="UnidadId" name="UnidadId" />
+                                                    <span class="input-group-btn">
+                                                        <button class=" btn btn-primary" type="button" id="BscUnid" onclick="BusquedaUnidadId()">
+                                                            <span class="Lsboton_open icon2-search">&nbsp;Buscar</span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                                @Html.ValidationMessage("UnidadId")
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="form-group" style="width:335px;">
+                                        <script type="text/javascript">
+                                            $("#Descripcion").LimiteCaracter($("#Descripcion").val());
+                                        </script>
+                                        <input type="hidden" id="AId" name="AId" />
+                                        <input type="hidden" id="UnidId" />
+                                        <input type="hidden" id="LocId" />
+                                        <label>Titulo de la Actividad : </label>
+                                        @Html.TextAreaFor(model => model.Descripcion, htmlAttributes: new { @class = "form-control mayuscula", rows = "2", style = "overflow-y:scroll;resize:none;", maxlength = "80", focus = "autofocus", onblur = "validarTextoEspacios(this,2)", onkeyup = "javascript:this.value=this.value.toUpperCase()", placeholder = "Descripción" })
+                                        @Html.ValidationMessageFor(model => model.Descripcion)
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label>Tipo Actividad : </label>
+                                        @Html.DropDownListFor(model => model.TipoActividadId, ViewBag.TipoActividadId as SelectList, "--Seleccione una Opción--", htmlAttributes: new { @class = "form-control", style = "width:240px" })
+                                        @Html.ValidationMessageFor(model => model.TipoActividadId)
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+                <br />
+                <div class="panel panel-primary" style="width:0 auto;margin:auto;border-color:#337ab7;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Detalle De La Actividad</h3>
+                    </div>
+                    <div class="panel-body">
+                        @Html.ValidationSummary(true)
+                        <div id="modal-OperaccionDetalle" class="panel panel-primary ocultar" style="width: 0 auto; margin: auto; border-color: #337ab7;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-center">Operaci&oacute;n Detalle</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="FechaHora-control" style="height:auto" id="ODHorarios">
+                                    <div style="border-bottom: 1px solid #c2c0c0; padding: 5px 0; text-align: center; color: red;">
+                                        <div class="form-horizontal" style="margin: 0 auto; width:100%">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Local: </label>
+                                                            <div class="input-group" style=" width: 95%">
+                                                                <input class="BusqInfo form-control" name="DescripLocalid" id="DescripLocalid" style="max-width:100%" readonly="readonly" type="text">
+                                                                <input value="674" id="LocalId" name="LocalId" type="hidden">
+                                                                <span class="input-group-btn">
+                                                                    <button class=" btn btn-primary" disabled="disabled" id="LclsId" type="button" onclick="BusquedaLocalesId()">
+                                                                        <span class="Lsboton_open icon2-search">&nbsp;Buscar</span>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="padding:30px 0 0.25em 2em 0.25em 0em;">
+                                                            <div class="form-group" style="margin-right:auto;margin-left:auto">
+                                                                <label>F. Realización</label>
+                                                                <div class="input-group" style="width:95%">
+                                                                    @Html.EditorFor(model => model.oValFRealizacionId, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", style = "width:115px;", title = "Dar click para cambiar la fecha" } })
+                                                                </div>
+                                                                @Html.ValidationMessageFor(model => model.oValFRealizacionId)
+                                                            </div>
+                                                            <script type="text/javascript">
+                                                                $(function () {
+                                                                    $("#oValFRealizacionId").attr('readonly', 'readonly');
+                                                                });
+                                                            </script>
+                                                        </td>
+                                                        <td style="padding:20px 0 0.25em 2em 0.25em 0em;">
+                                                            <div class="form-group" style="margin-right:auto;margin-left:auto">
+                                                                <label>H. Inicia</label>
+                                                                <div class="input-group" style="width:95%">
+                                                                    @Html.EditorFor(model => model.tempHInicio, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", maxlength = "7", style = "width:90px;", onblur = "validarTextoEspacios(this,2)", onkeypress = "return textoValidoHora(event)", title = "Dar click para cambiar la hora" } })
+                                                                    <span class="input-group-addon">
+                                                                        <span class="glyphicon glyphicon-time"></span>
+                                                                    </span>
+                                                                </div>
+                                                                @Html.ValidationMessageFor(model => model.tempHInicio)
+                                                            </div>
+                                                            <script type="text/javascript">
+                                                                $(function () {
+                                                                    $('#tempHInicio').datetimepicker({
+                                                                        format: 'LT',
+                                                                        stepping: 30
+                                                                    });
+                                                                });
+                                                            </script>
+
+                                                        </td>
+                                                        <td style="padding: 20px 0 0.25em 2em 0.25em 0em;">
+                                                            <div class="form-group" style="margin-right:auto;margin-left:auto">
+                                                                <label>H. Termina</label>
+                                                                <div class="input-group" style="width:95%">
+                                                                    @Html.EditorFor(model => model.tempHFin, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", style = "width:90px;", maxlength = "7", onblur = "validarTextoEspacios(this,2)", onkeypress = "return textoValidoHora(event)", title = "Dar click para cambiar la hora" } })
+                                                                    <span class="input-group-addon">
+                                                                        <span class="glyphicon glyphicon-time"></span>
+                                                                    </span>
+                                                                </div>
+                                                                @Html.ValidationMessageFor(model => model.tempHFin)
+                                                            </div>
+                                                            <script type="text/javascript">
+                                                                $(function () {
+                                                                    $('#tempHFin').datetimepicker({
+                                                                        format: 'LT',
+                                                                        stepping: 30
+                                                                    });
+                                                                });
+                                                            </script>
+                                                        </td>
+                                                        <td style="padding: 20px 0 0.25em 2em 0.25em 0em;">
+                                                            <div class="form-group" style="margin-right:auto;margin-left:auto">
+                                                                <button class="btnControl btn_modificar" id="btnModDet" disabled="disabled" title="Dar click para modificar la fila seleccionada">Modificar</button>
+                                                                <button class="btnControl btn_quitar" id="btnDeletDeta" disabled="disabled" title="Dar click para quitar de la lista de la activida">Quitar</button>
+                                                                <button class="btnControl btn_cancelar" id="btnCancelDeta" disabled="disabled" title="Dar click para cancelar las operaciones de la seleccion de la fila">Cancelar</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <input id="HorarioInicioId" name="HorarioInicioId" type="hidden">
+                                        <input id="HorarioFinId" name="HorarioFinId" type="hidden">
+                                        <input value="-1" id="TempIdAct" name="TempIdAct" type="hidden">
+                                        <input value="-851322018" id="TempIdDeta" name="TempIdDeta" type="hidden">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body_datetime" style="position: inherit; width: 875px;">
+                            <div class="head_step">Horarios y fechas de la actividad</div>
+                            <div class="content_datetime" style="height:auto;max-height:335px">
+                                <div class="step_setup loading" id="Horario" style="display: block;">
+                                    <div class="info_HoraFecha">
+                                        <div id="modal-ListaHorarios">                                            
+                                            <table class="webgrid-table" id="ListaActividad" style="width: 100%">
+                                                <thead class="webgrid-header">
+                                                    <tr>
+                                                        <th scope="col" style="padding: 0px; width: 400px;text-align:center;">Local</th>
+                                                        <th scope="col" style="padding: 0px; width: 400px;text-align:center;">F. Realizaci&oacute;n</th>
+                                                        <th scope="col" style="padding: 0px; width: 400px;text-align:center;">H. Inicio</th>
+                                                        <th scope="col" style="padding: 0px; width: 400px;text-align:center;">H. Termina</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div id="modal-HorariosChocantes" class="body_datetime ocultar" style="position: inherit; width: 875px;">
+                            <div class="head_step">Lista de los horarios y fechas en conflicto con los registros de la lista del detalle</div>
+                            <div class="content_datetime" style="height:auto;max-height:335px">
+                                <div class="step_setup loading" id="HorariosVerificaicon" style="display:block;">
+                                    <div class="info_HoraFecha">
+                                        <div>
+                                            <table class="webgrid-table" id="ListaActividadExistentes" style="width: 100%">
+                                                <thead class="webgrid-header">
+                                                    <tr>
+                                                        <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">Actividad</th>
+                                                        <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">Local</th>
+                                                        <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">F. Realización</th>
+                                                        <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">H. Inicio</th>
+                                                        <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">H. Fin</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+    <br />
+        <div class="form-group">
+            <button type="button" class="btn-success" style="border-radius: 5px;" disabled="disabled" title="Dar click para modificar la actividad" id="btn-ModificarAll">Guardar Modificación</button>
+            <button type="button" class="btn-danger" style="border-radius: 5px;" id="btn-CancelarId">Cancelar</button>
+        </div>
+    }
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

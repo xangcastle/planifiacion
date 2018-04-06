@@ -1,0 +1,39 @@
+﻿@model PlanificacionLocal.ModelView.ActView
+@{
+    ViewBag.Title = "Detalle De Atividad";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <body>
+        <script src="~/Scripts/Creados/Actividad/OpeMov.js"></script> 
+        <div class=".mensajesp_anunciarVal" data-accion="0"></div>       
+        <input type="hidden" id="IACTDId" />
+        <input type="hidden" id="IAId" />
+        <input type="hidden" id="FechIni" />
+        <input type="hidden" id="FechFin" />
+        <input type="hidden" id="DescripcionTemp" name="DescripcionTemp" />
+        <input type="hidden" id="TipoTemp" name="TipoTemp" />
+        <input type="hidden" id="DescUniIdTemp" name="DescUniIdTemp" />
+        <input type="hidden" id="UniIdTemp" name="UniIdTemp" />
+        <input type="hidden" id="DescLocIdTemp" name="DescLocIdTemp" />
+        <input type="hidden" id="LocIdTemp" name="LocIdTemp" />
+        <input type="hidden" id="TipoDSCTemp" name="TipoDSCTemp" />
+        @if (User.IsInRole("ROLELMI"))
+        {
+            <button id="btn-Eliminar" class="btn btn-default btn-sm pull-right">
+                <span class="glyphicon glyphicon-remove"></span> Eliminar
+            </button>
+        }
+
+        @if (User.IsInRole("ROLMDFI"))
+        {
+            <button id="btn-Editar" class="btn btn-default btn-sm pull-right" style="margin-right:5px;" onclick="EdicionActividadActual()">
+                <span class="glyphicon glyphicon-pencil" title="Dar click para modificar la fecha o el horario para la actividad seleccionada"></span> Editar
+            </button>
+        }
+
+        <p id="pDetalles"></p>
+    </body>
+}
+

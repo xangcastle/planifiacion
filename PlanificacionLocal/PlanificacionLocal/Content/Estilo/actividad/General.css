@@ -1,0 +1,44 @@
+﻿table{
+    border-collapse:collapse;border-spacing:0;border:0 none
+
+}
+.form-group {
+    width: 0 auto;
+    margin: 0 auto;
+}
+ input[type=checkbox]{
+     cursor:pointer;
+ }
+.form-control[disabled], .BusqInfo, fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #eee;
+}
+.form-control{
+    width: 300px;
+    cursor:pointer;
+}
+ 
+#container td {
+    padding: 0.25em 2em 0.25em 0em !Important;
+}
+#cont_filtro td {
+    padding:3px 0;
+   /*
+     padding: 0.25em 2em 0.25em 0em !Important;
+    */
+}
+textarea {
+    min-width: 300px;
+    min-height: 75px;
+    max-width: 300px;
+    max-height: 75px;
+    height: 75px;
+}
+
+.ContenedorBtn {
+    width: 100%;
+    text-align: center;
+    background-color: #d9edf7;
+    margin-top: 10px;
+}
+   

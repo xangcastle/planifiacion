@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "Calendario De Actividades";
+}
+
+<div class="content-wrapper">
+    <div class="content-wrappercontenido main-content clear-fix">
+        <div id="Principal">
+            <h2 class="titulo_ec">Lista de actividades por Local</h2>
+            <div class="titulo" style="max-width: 230px;">Filtro Por Local</div>
+            <div id="cont_filtro" class="border" style="max-width:530px;">
+                <table class="formulario">
+                    <tbody>                       
+                        <tr>
+                            <td style="padding:3px 0 0.25em 2em 0.25em 0em;">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <div>
+                                        <div class="form-group">
+                                            <div class="input-group" style="margin-bottom: 0px !important; width: 95%">
+                                                <input type="text" class="BusqInfo form-control" name="descriplocalid" id="descriplocalid" style="max-width:100%; width:250px" readonly="readonly" />
+                                                <input type="hidden" id="LocActualId" name="LocActualId" />
+                                                <span class="input-group-btn">
+                                                    <button class=" btn btn-primary" type="button" onclick="BusquedaLocales()">
+                                                        <span class="Lsboton_open icon2-search">&nbsp;Buscar</span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding:3px 0 0.25em 2em 0.25em 0em;">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-group" style="margin-bottom: 0px !important; width: 95%">
+                                            <label id="idCap"></label>
+                                            <input type="hidden" id="CapLocId" name="CapLocId" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="gridSystemModalLocal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                        <h4 class="modal-title" id="gridModalLabel">Búsqueda De Locales</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div style="text-align:left">
+                            <label>Descripción del local</label>
+                            <div class="input-group" style="width:95%">
+                                <span class="input-group-addon icon-close" onclick="CancelBusqLocales()" id="btnloadblcls" style="cursor:pointer">
+                                    <img style="width:20px; display:none" src="../Content/images/loading-ico.gif" />
+                                </span>
+                                <input type="text" id="DescripLclsid" class="form-control" style="width:100%; max-width:100%" maxlength="250" value="" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button" onclick="ListarLocales()">
+                                        <span class="icon2-search"></span>
+                                        &nbsp;Buscar
+                                    </button>
+                                    <button type="button" id="warningId" class="btn btn-warning ocultar" data-dismiss="modal">
+                                        <span class="icon2-cross"></span>
+                                        Cerrar
+                                    </button>
+                                    <button class="btn btn-danger" type="button" onclick="CancelarInfoAll()">
+                                        <span class="icon2-clear-formatting"></span>
+                                        Cancelar
+                                    </button>
+                                </span>
+                            </div>
+                            <br />
+                            <div id="modal-resultlista" class="ebody_table1">
+                                <table class="webgrid-table ocultar" style="width:100%" id="LstBusqLocales">
+                                    <thead class="webgrid-header">
+                                        <tr>
+                                            <th scope="col">No.Local</th>
+                                            <th scope="col">Descripción</th>
+                                            <th scope="col">Capacidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div id="calendar"></div>
+        <input type="hidden" id="LocsId" name="LocsId" />
+        <div id="ContenedorBloqueo" class="ImagenCarga" style="display: none;"></div>
+        <div class="loading_body">
+            <div></div>
+        </div>
+
+        @* CSS *@
+        <link href="~/Content/Estilo/actividad/ActividadLocal.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/actividad/TablaActividad.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/ImagenCarga.css" rel="stylesheet" />
+        <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+        <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+        <link href="~/Content/fullcalendar.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/actividad/estiloFormV2.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/actividad/Tabla.css" rel="stylesheet" />
+        <link href="~/Content/Utileria/Busqueda/Buscar.css" rel="stylesheet" />
+
+        @* JS *@
+        <script src="~/Scripts/moment.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/Creados/busqueda/BLocales.js"></script>
+        <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+        <script src="~/Scripts/jquery-1.11.3.js"></script>
+        <script src="~/Scripts/Creados/Actividad/fullcalendar.js"></script>
+        <script src="~/Scripts/gcal.js"></script>
+        <script src="~/Scripts/angular.js"></script>
+        <script src="~/Scripts/Creados/Actividad/CalendarioActividad.js"></script>
+        <script src="~/Scripts/jquery-ui-1.10.1.js"></script>
+        <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+        <p></p>
+        <p></p>
+    </div>
+</div>
+
+@section Scripts{
+    @Styles.Render("~/Content/EstiloLoc")
+    @Scripts.Render("~/bundles/jqueryval")
+}

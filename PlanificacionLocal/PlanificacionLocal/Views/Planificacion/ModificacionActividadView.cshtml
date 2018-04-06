@@ -1,0 +1,28 @@
+﻿@model PlanificacionLocal.ModelView.ActView
+@{
+    ViewBag.Title = "Busqueda De Atividades";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("ROLMDFI"))
+    {
+        <script src="~/Scripts/Creados/busqueda/BLocales.js"></script>
+        <div class=".mensajesp_anunciarVal" data-accion="0"></div>
+        <label>Actividad: </label>
+        <div class="input-group" style="margin-bottom: 0px !important; width: 95%">
+            <input type="text" class="BusqInfo form-control" name="DescripActdid" id="DescripActdid" style="max-width:100%" readonly="readonly" />
+            <input type="hidden" id="ActividadId" name="ActividadId" />
+            <span class="input-group-btn">
+                <button class=" btn btn-primary" type="button" onclick="BusquedaActId()">
+                    <span class="Lsboton_open icon2-search">&nbsp;Buscar</span>
+                </button>
+            </span>
+        </div>
+        <br />
+        <div class="form-group">
+            <button type="button" class="btn-success" style="border-radius: 5px;" onclick="oModActividadView()" title="Dar click para cargar la actividad a mofificar">Cargar Actividad</button>
+            <button type="button" class="btn-danger" style="border-radius: 5px;" data-dismiss="modal">Cerrar</button>
+        </div>
+    }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ReportViewer.WebForms</id>
+    <version>12.0.2402.20</version>
+    <title>ReportViewer.WebForms</title>
+    <authors>Midnight</authors>
+    <owners>Midnight</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Microsoft.ReportViewer.WebForms</description>
+    <summary />
+  </metadata>
+</package>

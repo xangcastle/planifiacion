@@ -1,0 +1,135 @@
+﻿.content-wrappercontenido {
+    background-color: #FFFFFF;
+}
+.body_deta {
+    background-color: #FCFCFC;
+    border: 1px solid #C2C0C0;
+    margin: 20px auto;
+    height: 435px;
+    width: 490px;
+    overflow: hidden;
+    border-radius:5px;
+
+}
+
+.head_deta {
+    background-color: #3E95CA;
+    box-shadow: 0px 0px 10px 0px #478AB3 inset;
+    height: 25px;
+    padding: 5px 0;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #F4ECEC;
+}
+.inf_deta {
+    height: 315px;
+    display:none;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 10px 0;
+    position: relative;
+}
+.ctrl_deta {
+    background-color: #F1F1F1;
+    border-top: 1px solid #C2C0C0;
+    height: 35px;
+    padding: 15px 0;
+    text-align: right;
+}
+
+    .ctrl_deta > div {
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+     .ctrl_deta input {
+        padding: 7px 10px;
+        margin: 0;
+        background-color: #2B8EC0;
+        color: #ECECEC;
+        cursor: pointer;
+        border: 1px solid #237CB4;
+        box-shadow: 0px 0px 10px 0px #4A8EBA inset;
+        outline-color: #237CB4;
+        border-radius: 4px;
+    }
+
+        .ctrl_deta input:hover {
+            background-color: #469DCB;
+        }
+
+        .ctrl_deta input:active {
+            background-color: #1873A1;
+        }
+    .ctrl_deta input {
+        -moz-user-select: none;
+        -o-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    /**/
+    .ctrl_deta a {
+       padding: 7px 10px;
+        margin: 0;
+        background-color: #2B8EC0;
+        color: #ECECEC;
+        cursor: pointer;
+        border: 1px solid #237CB4;
+        box-shadow: 0px 0px 10px 0px #4A8EBA inset;
+        outline-color: #237CB4;
+        border-radius: 4px;
+        text-decoration:none;
+        font-family:16px  Arial;
+    }
+
+        .ctrl_deta a:hover {
+            background-color: #469DCB;
+        }
+
+        .ctrl_deta a:active {
+            background-color: #1873A1;
+        }
+    .ctrl_deta a {
+        -moz-user-select: none;
+        -o-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+.content_deta {
+    height: 335px;
+}
+
+.lt_info, .lt_info li {
+    margin: 0;
+    padding: 0;
+}
+.info_deta {
+    border: 1px solid #BEBCBC;
+    display: table;
+    margin: 30px auto;
+}
+.lt_info {
+    display: table-cell;
+}
+
+    .lt_info li {
+        display: table-row;
+    }
+
+        .lt_info li span {
+            background-color: #F2F2F2;
+            border-bottom: 1px solid #D1D4D5;
+            display: table-cell;
+            padding: 8px 10px;
+        }
+
+            .lt_info li span:first-child {
+                background-color: #1C7CAE;
+                color: #F2F2F2;
+            }

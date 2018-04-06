@@ -1,0 +1,276 @@
+﻿@model PlanificacionLocal.ModelView.ActView
+@{
+    ViewBag.Title = "Planificación de atividades";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <div class="content-wrapper">
+    <div class="content-wrappercontenido main-content clear-fix">        
+        <div id="Principal">
+            <h2 class="titulo_ec">Lista de actividades por Local</h2>
+            <br />
+            <div class="titulo" style="max-width: 230px;">Filtro y Operaciones Por Local</div>
+            <div id="cont_filtro" class="border" style="max-width:990px;">
+                <table class="formulario">
+                    <tbody>
+                        <tr>
+                        @if (User.IsInRole("ROLLTRA"))
+                        { 
+                            <td style="padding:3px 0 0.25em 2em 0.25em 0em;">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <div>
+                                        <div class="form-group" style="width:350px;">
+                                            <div class="input-group" style="margin-bottom: 0px !important; width: 95%">
+                                                <input type="text" class="BusqInfo form-control" name="descriplocalid" id="descriplocalid" style="max-width:100%" readonly="readonly" />
+                                                <input type="hidden" id="LocActualId" name="LocActualId" />
+                                                <span class="input-group-btn">
+                                                    <button class=" btn btn-primary" type="button" onclick="BusquedaLocales()">
+                                                        <span class="Lsboton_open icon2-search">&nbsp;Buscar</span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding:3px 0 0.25em 2em 0.25em 0em;">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group" style="width:400px;">
+                                        <div class="input-group" style="margin-bottom: 0px !important; width: 100%">
+                                            <label id="idCap" style=""></label>
+                                            <input type="hidden" id="CapLocId" name="CapLocId" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                         }
+                        </tr>
+                        <tr>
+                          <td style="padding:3px 0 0.25em 2em 0.25em 0em;">
+                            @if (User.IsInRole("ROLECRA"))
+                            {
+                               <div class="col-lg-5 col-md-5 col-sm-5">
+                                    <div class="form-group">
+                                        <div class="input-group" style="margin-bottom: 0px !important; width: 65%">
+                                            <input id="AgrAct" disabled="disabled" type="button" class="btn btn-success active" style="border-radius: 5px;" title="Dar click para agregar nueva actividad" value="Registar Nueva" onclick="RegistroNuevo()"/>
+                                        </div>
+                                    </div>
+                                </div> 
+                            }
+                            @if (User.IsInRole("ROLMDFI"))
+                            {
+                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                    <div class="form-group">
+                                        <div class="input-group" style="margin-bottom: 0px !important; width: 65%">
+                                            <input id="ModAct" disabled="disabled" type="button" class="btn btn-success active" style="border-radius: 5px;" title="Dar click para modificar la actividad existente" value="Modificar Existente" />
+                                        </div>
+                                    </div>
+                                </div> 
+                            }                               
+                               
+                            </td>
+                            @if (User.IsInRole("ROLECRA") || User.IsInRole("ROLMDFI"))
+                             {
+                               
+                            <td style="padding:3px 0 0.25em 2em 0.25em 0em;">                                                                    
+                                <input type="hidden" id="AbilitaLlave" name="AbilitaLlave" value="true" />
+                                  <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Hora Inicio:</label>
+                                        <div class="input-group" style="margin-bottom: 0px !important; width: 95%">
+                                            @Html.EditorFor(model => model.HInicio, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", style = "width:160px;", format="h:mm A",placeholder = "Seleccione una hora", title = "Dar click para cambiar la hora" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                    <div class="form-group">
+                                        <label>Hora Fin:</label>
+                                        <div class="input-group" style="margin-bottom: 0px !important; width: 95%">
+                                            @Html.EditorFor(model => model.HFin, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", style = "width:160px;",format="h:mm A", placeholder = "Seleccione una hora", title = "Dar click para cambiar la hora" } })
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </td>
+                            }
+                        </tr>                   
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div id="calendar"></div>
+        @if (User.IsInRole("ROLLTRA"))
+        {
+          <!-- Modal -->
+        <div id="gridSystemModalLocal" class="modal fade" style="overflow:scroll;" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLocal" aria-hidden="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="border-radius: 8px; border: 1px solid #CBCBCB; margin: 50px auto; overflow: hidden;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                        <h4 class="modal-title" id="gridModalLabel">Búsqueda De Locales</h4>
+                    </div>
+                    <div class="modal-body" id="BsqLocPrinc">                        
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div><!-- /.modal-dialog -->  
+        }
+        
+        @if (User.IsInRole("ROLMDFI"))
+        {
+             <!-- Modal -->
+        <div id="myModalDetaValInfo" class="modal fade" style="overflow:scroll;" role="dialog">
+            <div class="mensajes_anunciar2" data-accion="0"></div>
+            <div class="mensaje_esperar2" data-accion="0"></div>
+            <div class="mensajesp_anunciar2" data-accion="0"></div>
+            <link href="~/Content/Estilo/actividad/General.css" rel="stylesheet" />
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="border-radius: 8px; border: 1px solid #CBCBCB; margin: 50px auto; overflow: hidden;">
+                    <div class="modal-header">
+                        <button type="button" class="close" onclick="InitCalendario()">&times;</button>
+                        <h4 class="modal-title">Informacicón</h4>
+                    </div>
+                    <div class="modal-body" id="CuerpoModalInfoDeta" style="overflow-y:scroll;height:380px;">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-dialog -->
+        }        
+        @if (User.IsInRole("ROLMDFI"))
+        {
+             <!-- Modal -->
+        <div id="AddAct" class="modal fade" role="dialog">
+            <div class="mensajes_confirmar1" data-accion="0"></div>
+            <div class="mensajes_anunciar1" data-accion="0"></div>
+            <div class="mensaje_esperar1" data-accion="0"></div>
+            <input hidden id="TIdAct" name="TIdAct" />
+            <!-- Modal -->
+            <div id="gridSystemModalActividad" class="modal fade" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="border-radius: 8px; border: 1px solid #CBCBCB; margin: 50px auto; overflow: hidden;">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="SalirBusquedaActividad()" aria-label="Close">
+                                <span aria-hidden="true">x</span>
+                            </button>
+                            <h4 class="modal-title" id="gridModalLabel">Busqueda De Actividades</h4>
+                        </div>
+                        <div class="modal-body" id="BusqActividad">
+                        </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div><!-- /.modal-dialog -->
+            <div class="modal-dialog">
+                <div class="modal-content" style="border-radius: 8px; border: 1px solid #CBCBCB; margin: 50px auto; overflow: hidden;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">B&uacute;squeda De Actividad Existente</h4>
+                    </div>
+                    <div class="modal-body" id="CuerpoModalView">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-dialog -->
+        }
+        @if (User.IsInRole("ROLLTRA"))
+        {
+            <!-- Modal -->
+        <div id="myModalDeta" class="modal fade" style="overflow:scroll;" role="dialog">
+            <div class="mensajes_confirmarD" data-accion="0"></div>
+            <div class="mensajes_anunciarD" data-accion="0"></div>
+            <div class="mensaje_esperarD" data-accion="0"></div>
+            <div class="modal-dialog">
+                <div class="modal-content" style="border-radius: 8px; border: 1px solid #CBCBCB; margin: 50px auto; overflow: hidden;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Detalles</h4>
+                    </div>
+                    <div class="modal-body" id="CuerpoModalDeta">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-dialog --> 
+        }       
+
+       
+        @if (User.IsInRole("ROLECRA") || User.IsInRole("ROLMDFI"))
+        {
+             <!-- Modal -->
+        <div class="modal fade" id="myModal" style="overflow:scroll;" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="false">
+            <div class="mensajes_confirmar1" data-accion="0"></div>
+            <div class="mensajes_anunciar1" data-accion="0"></div>
+            <div class="mensaje_esperar1" data-accion="0"></div>            
+            <div class="modal-dialog" role="dialog" style="margin: 0 auto; width: auto">
+                <div class="modal-content" style="width: 961px; border-radius: 8px; border: 1px solid #CBCBCB; margin: 50px auto; overflow:hidden">
+                    <div class="modal-header" style="position:relative;">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabelId"></h4>
+                    </div>
+                    <div class="modal-body" id="CuerpoModal">
+                    </div>
+                    <div class="modal-footer" id="PieModal">
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal-dialog -->         
+        }        
+        <div class="mensajes_confirmar" data-accion="0"></div>
+        <div class="mensajes_anunciar" data-accion="0"></div>
+        <div class="mensaje_esperar" data-accion="0"></div>
+        <div class="mensajep_anunciar" data-accion="0"></div>
+        <div id="ContenedorBloqueo" class="ImagenCarga" style="display: none;"></div>
+        <div class="loading_body">
+            <div></div>
+        </div>
+        @* CSS *@
+        <link href="~/Content/Estilo/actividad/Index.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/actividad/ActividadLocal.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/ImagenCarga.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/daterangepicker.css" rel="stylesheet" />
+        <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+        <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+        <link href="~/Content/fullcalendar.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/actividad/FrmV2.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/actividad/estiloFormV2.css" rel="stylesheet" />
+        <link href="~/Content/Utileria/Busqueda/Buscar.css" rel="stylesheet" />
+        <link href="~/Content/Estilo/actividad/General.css" rel="stylesheet" />
+        @* JS *@
+        <script src="~/Scripts/moment.js"></script>
+        <script src="~/Scripts/Creados/busqueda/BLocales.js"></script>
+        <script src="~/Scripts/Creados/Actividad/OpeMov.js"></script>
+        <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+        <script src="~/Scripts/jquery-1.11.3.js"></script>
+        <script src="~/Scripts/daterangepicker.js"></script>
+        <script src="~/Scripts/Creados/Actividad/Calendario.js"></script>
+        <script src="~/Scripts/gcal.js"></script>
+        <script src="~/Scripts/angular.js"></script>
+        <script src="~/Scripts/Creados/Actividad/JSFrm.js"></script>
+        <script src="~/Scripts/Creados/Actividad/Planificacion.js"></script>
+        <script src="~/Scripts/Creados/Actividad/ValidacionActividad.js"></script>
+        <script src="~/Scripts/Jquery.LimiteCaracter_Plugin.js"></script>
+        <script src="~/Scripts/jquery-ui-1.10.1.js"></script>
+        <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+        <script src="~/Scripts/bootstrap-datetimepicker.js"></script> 
+            <p></p>
+            <p></p>
+        </div>
+</div>
+}
+
+@section Scripts{
+    @Styles.Render("~/Content/EstiloLoc")
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

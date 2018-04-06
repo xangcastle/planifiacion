@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="es" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="utf-8" />
+    <link href="~/img/logo-unan.png" rel="shortcut icon" type="image/x-icon" />
+    
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <title>@ViewBag.Title</title>
+   
+
+    <style type="text/css">
+
+        ul#css3menu1 ul li:hover > a, ul#css3menu1 ul li a.pressed {
+            text-decoration: none;
+            color: #257E84 !important;
+            background-color: #FFFEFD;
+            -moz-opacity: .50;
+            filter: alpha(opacity=50);
+            opacity: .50;
+        }
+
+        ul#css3menu1 li:hover > a, ul#css3menu1 li a.pressed {
+            color: #257E84 !important;
+            background-color: #FFFEFD;
+            -moz-opacity: .50;
+            filter: alpha(opacity=50);
+            opacity: .50;
+            border-color: white white #257E84 transparent;
+        }
+
+        ul#css3menu1 li.topmenu:hover > a, ul#css3menu1 li.topmenu a.pressed {
+            color: #257E84 !important;
+            background-color: #FFFEFD;
+            -moz-opacity: .50;
+            filter: alpha(opacity=50);
+            opacity: .50;
+            border-color: white white #257E84 transparent;
+        }
+
+        .no-touch .dl-menuwrapper li a:hover {
+            color: #257E84 !important;
+            background-color: #FFFEFD;
+            -moz-opacity: .50;
+            filter: alpha(opacity=50);
+            opacity: .50;
+        }       
+        
+    </style>
+    @Styles.Render("~/Content/css")
+    <link href="@Url.Content("~/Content/Estilo/actividad/Layout.css")" rel="stylesheet" />
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="@Url.Content("~/Scripts/jquery-1.10.1.js")"></script>
+
+    <style>
+        
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+
+</head >
+<body id="cuerpo">
+
+    <div class="content-wrapperimagen">
+        <img src="~/Content/images/EncabezadoRA.png" />
+    </div>
+
+    @Html.Partial("_LoginPartial")
+
+    @RenderSection("featured", required: false)
+    @RenderBody()
+    
+
+    <div class="content-wrapperpie">
+        &copy; UNAN-Managua @DateTime.Now.Year
+    </div>
+    <input type="text" id="url" value="/PlanificacionLocal/" style="width:2px; display:none">
+    <div class="loading_body" style="display: none;">
+        <div></div>
+    </div>    
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/JSRaiz.js"></script>
+    @RenderSection("scripts", required: false)
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <script src="~/Scripts/js/jquery-dlmenu.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#dl-menu').dlmenu();
+        });
+    </script>
+    
+</body>
+</html>

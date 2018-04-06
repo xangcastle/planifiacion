@@ -1,0 +1,37 @@
+﻿.ocultar {
+    display:none !important;
+}
+.modal-header,.modal-footer {
+        background-color: #58a1b9;
+}
+.modal fade{
+    background: rgba(86, 86, 87, 0.6);
+    display: none;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    height: 100%;
+    left: 0;
+    overflow: scroll;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+ textarea {
+    resize:none;
+}
+
+.TituloM {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+.form-control[disabled], .BusqInfo, fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #eee;
+}
+ input[type=checkbox]{
+     cursor:pointer;
+ }
+ .form-control{
+     cursor:pointer;
+ }

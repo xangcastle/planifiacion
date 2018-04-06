@@ -1,0 +1,37 @@
+﻿@model PlanificacionLocal.Models.TipoActividad
+
+@{
+    ViewBag.Title = "Detalle Tipo Actividad";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <div class="content-wrapper">
+    <section class=" content-wrappercontenido">
+        <div class="body_deta" style="height:265px;">
+            <div class="head_deta">Detalle De Tipo Actividad</div>
+            <div class="content_deta" style="display:block;height:180px;">
+                <div class="inf_deta" style="display:block;height:160px;">
+                    <div class="info_deta">
+                        <ul class="lt_info">
+                            <li>
+                                <span>Descripcion</span>
+                                <span>@Html.DisplayFor(model => model.Descripcion)</span>
+                            </li>                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="ctrl_deta">
+                <div>
+                    <a href="@Url.Action("Index")" class="btn btn-primary btn-log" role="button" style="font:inherit;">Regresar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+}
+
+@section Scripts{
+    @Styles.Render("~/Content/EstiloDetail")
+}

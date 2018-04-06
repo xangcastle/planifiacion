@@ -1,0 +1,162 @@
+﻿.form-control[disabled], .BusqInfo, fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #eee;
+}
+.mayuscula {
+    text-transform: uppercase!important;
+}
+.body_datetime {
+    background-color: #FCFCFC;
+    border: 1px solid #C2C0C0;
+    margin: 20px auto;
+    height: 340px;
+    width: 890px;
+    overflow: hidden;
+}
+
+.head_step1 {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+
+    /*background-color: #3E95CA;*/
+    box-shadow: 0px 0px 10px 0px #478AB3 inset;
+    height: 25px;
+    padding: 5px 0;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    /*color: #F4ECEC;*/
+}
+
+.head_step {
+    background-color: #3E95CA;
+    box-shadow: 0px 0px 10px 0px #478AB3 inset;
+    height: 25px;
+    padding: 5px 0;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #F4ECEC;
+}
+
+.content_datetime {
+    height: 335px;
+}
+
+.step_setup {
+    height: 315px;
+    display:none;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 10px 0;
+    position: relative;
+}
+.step_setup.loading:after {
+        background-color: rgba(0, 0, 0, 0.1);
+        background-image: url('../../images/ajax-loader.gif');
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        z-index: 1000;
+        width: 100%;
+        height: 100%;
+        content: "";
+        top: 0;
+    }
+/****************Fechas y Horarios**************/
+#Horario-actividad {
+    position: relative;
+}
+
+    #Horario-actividad.loading:after { 
+        background-color: rgba(0, 0, 0, 0.1);
+        background-image: url('../../images/ajax-loader.gif');
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        z-index: 1000;
+        width: 100%;
+        height: 100%;
+        content: "";
+        top: 0;
+    }
+.cont_horario_lista {display:table;margin:0;padding:0;width:100%;}
+.cont_horarios {
+    border: 1px solid #EAEAEA;
+    display: table-cell;
+    width:50%;
+}
+.cont_horarios > h3 {
+    margin: 0;
+    background-color: #F8F8F8;
+    padding: 4px;
+    vertical-align: middle;
+    text-align: center;
+    color: #A3A3A3;
+    border-bottom: 1px solid #EAEAEA;
+}   
+
+/*////////////////////////////////////////////////////////////////*/
+#grupo-horafecha {
+      border: 1px solid #DADADA;
+    color: #6B6767;
+    display: table-cell;
+    height: 35px;
+    vertical-align: top;
+    width: 300px;
+}
+.SelectorFecha{
+      border: 1px solid #DADADA;
+    color: #6B6767;
+    display: table-cell;
+    height: 35px;
+    vertical-align: top;
+    width: 170px;
+}
+
+.FechaHora-control{
+    display: inline-table;
+    margin-bottom: 5px;
+}
+
+.FechaHora-control  .btnControl {
+        margin: 0;
+        border: none;
+        height: auto;
+        display: table-cell;
+        font: inherit;
+        color: inherit;
+        padding: 7px 20px;
+        background-color: #F7F7F7 !important;
+        box-shadow: -2px -4px 6px 0px #E8E8E8 inset;
+        color: #6B6565;
+        border: 1px solid #D2D2D2;
+        cursor: pointer;
+        outline-color: #C5C5C5;
+    }
+    .FechaHora-control .btnControl:hover {
+            background-color: #FFFFFF !important;
+        }
+    .FechaHora-control .btnControl:active {
+            background-color: #F7F7F7 !important;
+            box-shadow: 2px 4px 6px 0px #E8E8E8 inset;
+        }
+.btn_agregar {
+    background-color: transparent;
+    border: none;
+    background-image: url('../../images/add_16_X_16.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    padding: 5px 15px;
+}
+.selector_HoraFecha {
+    display: inline-block;
+    margin: 0;
+    padding: 5px 10px 6px 10px;
+    border: 1px solid #dadada;
+    color: #808080;
+}

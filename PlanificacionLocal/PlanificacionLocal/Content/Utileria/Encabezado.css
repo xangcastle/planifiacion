@@ -1,0 +1,41 @@
+﻿.titulo_ec {
+    color: #EFEFEF;
+    text-align: center;
+    border: 2px dotted #C2C4C5;
+    background-color: #4A8AA6;
+    padding: 10px 0px;
+    border-radius: 5px;
+}
+.cont_bottom 
+{
+    text-align:center;
+    border-style: groove;
+    border-radius: 5px;
+    padding: 1px 10px 1px 10px;
+    box-shadow: 0px 0px 3px 1px black;
+    border-color: #EEEEEE;
+    width: 920px;
+    background-color: #CACACA;
+    color: black;
+}
+.cont_bottom a {     
+                     
+               cursor: pointer;
+               display: inline-block;
+               text-align:center;
+               width: 190px; height: 20px;
+               background-color: #eeeff1;
+               box-shadow: -1px -2px 6px 0 #b6b5b5 inset;
+               border: 1px solid #9b9ea0;
+               border-radius: 5px;
+               color: #5c6864;
+               font: 900 15px Tahoma;
+               text-decoration:none;
+               font-size:14px;
+               background-image:url(../Utileria/Images/agregar.gif);
+               background-position: 5px center;
+               background-repeat:no-repeat;
+               padding: 3px 30px;
+               font-weight: bold;
+    }
+

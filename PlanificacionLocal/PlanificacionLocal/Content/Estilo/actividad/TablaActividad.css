@@ -1,0 +1,221 @@
+﻿.webgrid-row-style tr:nth-child(2n+1){
+     background-color: #F5F5F5;
+    padding: 3px 7px 2px;
+}
+
+/*.mi-webgrid
+{
+    
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    width: auto;
+    display: table;
+    border-collapse: collapse;
+    border: solid #00c6ff;
+    background-color: lightyellow;
+     
+}
+.mi-webgrid-table td, th
+{
+    border: 1px solid lightblue;
+    padding: 3px 7px 2px;
+}
+.mi-webgrid-header, .mi-webgrid-header a
+{
+    
+    color:black;
+    text-align: center;
+    background-color:#00c6ff;
+    
+}
+.mi-webgrid td
+{
+    padding: 3px 7px 2px;
+}
+.mi-webgrid td:not(:last-child){
+    background-color: #F5F5F5;
+}
+.mi-webgrid tr:nth-child(2n){
+     background-color: #F5F5F5;
+}
+.mi-webgrid tr:nth-child(2n+1){
+     background-color: #F5F5F5;
+}
+.mi-webgrid:hover td{
+    background-color:#00c6ff;
+	cursor:pointer;
+}
+/*.mi-webgrid{
+    width:100%;
+    margin:0;
+    padding:0;
+    border:0;
+    border-collapse:collapse
+}
+.mi-webgrid a{
+    color:#000!important
+
+}
+.mi-webgrid-header{
+    padding:0 5px;
+    text-align:center;
+    height:20px;
+    font-size:12px;
+    border:1px solid #aaa
+
+}
+.mi-webgrid-header th{
+    background-color:#ebebeb;
+    border-right:1px solid #aaa;
+    padding-left:5px
+
+}
+.mi-webgrid-header th a{
+    color:#000!important;
+    font-family:Verdana;
+    font-weight:bold;
+    font-size:14px
+
+}
+.mi-webgrid-header th a:hover{
+    text-decoration:none!important
+
+}
+.mi-webgrid-footer{
+    padding:6px 5px;
+    text-align:center;
+    background-color:#ebebeb;
+    height:25px;
+    border:1px solid #aaa;
+    font-style:normal;
+    color:#000;
+    font-weight:bold
+
+}
+.one-webgrid-footer{
+    padding:6px 5px;
+    text-align:center;
+    background-color:#ebebeb;
+    height:25px;
+    border-top:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+    font-style:normal;
+    color:#000;
+    font-weight:bold
+
+}
+.mi-webgrid-footer td,
+.one-webgrid-footer td{
+    text-align:center;
+    font-family:'Microsoft Sans Serif';
+    font-size:15px;
+    font-weight:bold;
+    padding-top:8px;
+    padding-bottom:10px
+
+}
+.mi-webgrid-footer td a,
+.one-webgrid-footer td a{
+    font-size:12px;
+    text-decoration:none;
+    background-color:#ebebeb;
+    padding:5px;
+    padding-right:8px;
+    margin-left:2px;
+    border:2px solid #aaa;
+    border-radius:5px;
+    color:#000
+
+}
+.mi-webgrid-footer td a:hover{
+    background-color:#ffffe0;
+    color:#000
+
+}
+.one-webgrid-footer td a:hover{
+    background-color:#ffffe0;
+    color:#000
+
+}
+.mi-webgrid-alternating-row td{
+    height:22px;
+    background-color:#f2f2f2;
+    border:1px solid #aaa;
+    font-size:14px;
+    padding-left:5px
+
+}
+.mi-webgrid-alternating-row:hover td{
+    background-color:#ffffe0!important;
+    cursor:pointer
+
+}
+.mi-webgrid-row-style td{
+    height:22px;
+    border:1px solid #aaa;
+    font-size:14px;
+    background-color:#fff;
+    padding-left:5px
+
+}
+.mi-webgrid-row-style-error td{
+    height:22px;
+    border:1px solid #aaa;
+    font-size:14px;
+    background-color:#ffcdd2;
+    padding-left:5px
+
+}
+.mi-webgrid-row-style:hover td{
+    background-color:#ffffe0!important;
+    cursor:pointer
+
+}
+.mi-webgrid-selected-row{
+    background-color:aqua;
+    font-weight:bold
+
+}
+.mi-webgrid-diferent-row td{
+    height:22px;
+    background-color:rgba(13,182,191,.2);
+    border:1px solid #aaa;
+    font-size:14px
+
+}
+.mi-webgrid-diferent-row:hover td{
+    background-color:#ffffe0;cursor:pointer
+
+}
+.one-webgrid-alternating-row td{
+    height:22px;
+    background-color:#f2f2f2;
+    border-top:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+    font-size:14px;padding:5px
+
+}
+.one-webgrid-alternating-row:hover td{
+    background-color:#ffffe0!important;
+    cursor:pointer
+
+}
+.one-webgrid-row-style td{
+    height:22px;
+    border-top:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+    font-size:14px;
+    background-color:#fff;
+    padding:5px
+
+}
+.one-webgrid-row-style:hover td{
+    background-color:#ffffe0;
+    cursor:pointer
+
+}
+.dinamicTable tbody tr:nth-child(even) td{
+    background-color:#f2f2f2
+
+}*/

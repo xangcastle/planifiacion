@@ -1,0 +1,91 @@
+﻿<div id="modal-OperaccionDetalle" class="body_datetime ocultar" style="position: inherit; width: 875px;">
+    <div class="head_step">Horarios y fechas de la actividad</div>
+    <div class="content_datetime" style="height:auto;max-height:335px">
+        <div class="step_setup loading" id="Horario" style="display: block;">
+            <div class="info_HoraFecha">
+                <div class="FechaHora-control ocultar" id="oHorarios">
+                    <div style="border-bottom: 1px solid #c2c0c0; padding: 5px 0; text-align: center; color: red;">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label>Local: </label>
+                                        <div class="input-group" style=" width: 95%">
+                                            <input type="text" class="BusqInfo form-control" name="DescripLocalid" id="DescripLocalid" style="max-width:100%" readonly="readonly" />
+                                            <input type="hidden" id="LocalId" name="LocalId" />
+                                            <span class="input-group-btn">
+                                                <button class=" btn btn-primary" id="LclsId" type="button" onclick="BusquedaLocalesId()">
+                                                    <span class="Lsboton_open icon2-search">&nbsp;Buscar</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <label>F. Realizaci&oacute;n</label>
+                                        <div class="input-group" style="width:95%">
+                                            <input type="text" id="oValFRealizacionId" name="oValFRealizacionId" class="form-control" readonly="readonly" style="width:115px;" title="Dar click para cambiar la fecha" />
+                                        </div>
+                                        <script type="text/javascript">
+                                            $("#oValFRealizacionId").daterangepicker({
+                                                singleDatePicker: true,
+                                                showDropdowns: true,
+                                                locale: {
+                                                    format: 'DD/MM/YYYY'
+                                                }
+
+                                            });
+                                        </script>
+                                    </td>
+                                    <td>
+                                        <label>H. Inicia</label>
+                                        <div class="input-group" style="width:95%">
+                                            <input type="text" id="tempHInicio" name="tempHInicio" class="form-control" readonly="readonly" style="width:110px;" title="Dar click para cambiar la hora" />
+                                        </div>
+                                        <script type="text/javascript">
+                                            $('#tempHInicio').daterangepicker({
+                                                singleDatePicker: true,
+                                                showDropdowns: true,
+                                                timePicker: true,
+                                                autoApply: true,
+                                                timePickerIncrement: 30,
+                                                locale: {
+                                                    format: 'h:mm A'
+                                                },
+                                                minDate: new Date($('#tempHInicio').val())
+                                            });
+                                        </script>
+                                    </td>
+                                    <td>
+                                        <label>H. Termina</label>
+                                        <div class="input-group" style="width:95%">
+                                            <input type="text" id="tempHFin" name="tempHFin" class="form-control" readonly="readonly" style="width:110px" title="Dar click para cambiar la hora" />
+                                        </div>
+                                        <script type="text/javascript">
+                                            $('#tempHFin').daterangepicker({
+                                                singleDatePicker: true,
+                                                showDropdowns: true,
+                                                timePicker: true,
+                                                autoApply: true,
+                                                timePickerIncrement: 30,
+                                                locale: {
+                                                    format: 'h:mm A'
+                                                },
+                                                minDate: new Date($('#tempHFin').val())
+                                            });
+                                        </script>
+                                    </td>
+                                    <td>
+                                        <button class="btnControl btn_modificar" title="Dar click para modificar la fila seleccionada">Modificar</button>
+                                        <button class="btnControl btn_quitar" title="Dar click para quitar de la lista de la activida">Quitar</button>
+                                        <button class="btnControl btn_cancelar" title="Dar click para cancelar las operaciones de la seleccion de la fila">Cancelar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+

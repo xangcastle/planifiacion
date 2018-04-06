@@ -1,0 +1,53 @@
+﻿@model PlanificacionLocal.Models.Local
+
+@{
+    ViewBag.Title = "Detalle De Local";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <div class="content-wrapper">
+    <section class=" content-wrappercontenido">
+        <div class="body_deta" style="height:420px;">
+            <div class="head_deta">Detalle De Local</div>
+            <div class="content_deta" style="display:block">
+                <div class="inf_deta" style="display:block;">
+                    <div class="info_deta">
+                        <ul class="lt_info">
+                            <li>
+                                <span>No Local</span>
+                                <span>@Html.DisplayFor(model => model.NumLocal)</span>
+                            </li>
+                            <li>
+                                <span>Unidad</span>
+                                <span>@Html.DisplayFor(model => model.Unidad.DescripcionUnidad)</span>
+                            </li>
+                            <li>
+                                <span>Tipo Local</span>
+                                <span>@Html.DisplayFor(model => model.TipoLocal.DescripcionTipoLocal)</span>
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.Descripcion)</span>
+                                <span>@Html.DisplayFor(model => model.Descripcion)</span>
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.Capacidad)</span>
+                                <span>@Html.DisplayFor(model => model.Capacidad)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="ctrl_deta">
+                <div>
+                    <a href="@Url.Action("Index")" class="btn btn-primary btn-log" role="button" style="font-style:inherit;">Regresar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+}
+
+@section Scripts{
+    @Styles.Render("~/Content/EstiloDetail")
+}

@@ -1,0 +1,36 @@
+﻿<script src="~/Scripts/Creados/busqueda/BLocales.js"></script>
+<script src="~/Scripts/Creados/Actividad/OpeMov.js"></script>
+<div style="text-align:left">
+    <label>Descripción del local</label>
+    <div class="input-group" style="width:95%">
+        <span class="input-group-addon icon-close" onclick="CancelBusqLocalId()" id="btnloadblclid" style="cursor:pointer">
+            <img style="width:20px; display:none" src="../Content/images/loading-ico.gif" />
+        </span>
+        <input type="text" id="DescripLclid" class="form-control" style="width:100%; max-width:100%" maxlength="250" value="" />
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" onclick="ListarLocalesId()">
+                <span class="icon2-search"></span>
+                &nbsp;Buscar
+            </button>
+            <button class="btn btn-danger" type="button" onclick="CancelarInfoAll()">
+                <span class="icon2-clear-formatting"></span>
+                Cancelar
+            </button>
+        </span>
+    </div>
+    <br />
+    @Html.ValidationSummary(true)
+    @Html.ValidationMessage("oVerLocalId")
+    <div id="modal-resultlistaLocalid" class="ebody_table1">
+        <table class="webgrid-table ocultar" style="width:100%" id="LstBusqLocalId">
+            <thead class="webgrid-header">
+                <tr>
+                    <th scope="col">No.Local</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Capacidad</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

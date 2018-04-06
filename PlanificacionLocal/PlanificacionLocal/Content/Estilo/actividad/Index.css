@@ -1,0 +1,13 @@
+﻿.Capa td{
+    padding: 0.25em 2em 0.25em 0em;
+}
+#contFiltro td{
+        padding: 0.25em 2em 0.25em 0em;
+}
+.form-control[disabled], BusqInfo, fieldset[disabled] {
+    cursor: not-allowed;
+    background-color: #eee;
+}
+.input[type=checkbox], form-control{
+     cursor:pointer;
+ }

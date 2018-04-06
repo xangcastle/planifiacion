@@ -1,0 +1,133 @@
+﻿@model PlanificacionLocal.ModelView.ListaTipoLocal
+@{
+    ViewBag.Title = "Tipos Local";
+    WebGrid grid = new WebGrid(Model.ResultTipoLocal,
+       defaultSort: "titulo", rowsPerPage: 30, canPage: true, canSort: false, fieldNamePrefix: "gridItens", pageFieldName: "dentro", selectionFieldName: "selectedRow");
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+<div class="content-wrapper">
+    <div class="content-wrappercontenido main-content clear-fix">
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/bootbox.min.js"></script>
+        <script src="~/Scripts/Creados/Eliminacion/EliminacionTipoLocal..js"></script>
+        <div id="Principal">
+            <h2 class="titulo_ec">Lista de cat&aacute;logo Tipo Local</h2>
+            <br />
+            @using (Html.BeginForm())
+            {
+                <div class="titulo">Filtro</div>
+                <div id="cont_filtro" class="border" style="max-width:930px">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="padding:5px 20px"><label>Descripción:</label></td>
+                                <td>@Html.EditorFor(model => model.PDescripcion, new { htmlAttributes = new { @class = "form-control", style = "width:330px;" } })</td>
+                                <td style="padding:5px 20px"><input type="submit" value=" " id="btnBuscar" class="masterTooltip" style="border-radius:5px; " /> </td>
+                                <td>
+                                    <div>
+                                      @if (User.IsInRole("ROLECRA"))
+                                      {
+                                          <a href="@Url.Action("Create")" title="Dar click para agregar nuevo tipo local" class="botom" style="border-radius:5px ">
+                                            Crear nuevo
+                                        </a>
+                                      }
+                                      @if (User.IsInRole("ROLRPTRO"))
+{
+    <a href="/Reportes/ReporteCatalogo.aspx?Reporte=ListaDeTiposLocal" class="btn btn-info" style="color: white; margin-left: 10px;" target="_blank">
+        <span class="glyphicon glyphicon-print"></span>Imprimir Lista
+    </a>
+}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+            <div style="font-family: Verdana; font-size: 15px;">
+            @grid.GetHtml(
+            tableStyle: "webgrid-table",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            selectedRowStyle: "webgrid-selected-row",
+            rowStyle: "webgrid-row-style",
+            mode: WebGridPagerModes.All,
+            firstText: "<< Primera ", previousText: "< Anterior ", nextText: " Siguiente >", lastText: " Última >>",
+
+            columns:
+                grid.Columns(
+                grid.Column(columnName: "DescripcionTipoLocal", header: "Descripcion"),
+                         grid.Column("Acciones", header: "Acciones", style: "col1Width",
+                    format: @<text>
+                    @if (User.IsInRole("ROLMDFI"))
+                    {
+                        <a href="@Url.Action("Edit", new { _id=item.Id})" title="Editar" class="masterTooltip" style="text-decoration:none">
+                        <img src="@Url.Content("~/Content/Utileria/Images/edit.png")" height="18" width="17" />
+                    </a>
+                    }
+                    @if (User.IsInRole("ROLLTRA"))
+                    {
+                        <a id="btn_details" href="@Url.Action("Details", new { _id=item.Id})" title="Detalle" class="masterTooltip" style="text-decoration:none">
+                        <img src="@Url.Content("~/Content/Utileria/Images/detallar.png")" height="18" width="17" />
+                    </a>
+                    }
+                    @if (User.IsInRole("ROLELMI"))
+                    {
+                        <a title="Eliminar" class="masterTooltip" style="text-decoration:none;cursor:pointer" onclick="msjConfi(@item.Id)">
+                       <img src="@Url.Content("~/Content/Utileria/Images/eliminar.gif")" height="17" width="15" />
+                    </a>
+                    }
+                    </text>)
+                    ))
+            </div>
+            <input type="hidden" id="TipoLocId" name="TipoLocId" />
+            @if (User.IsInRole("ROLELMI"))
+            {
+                <div id="ModalConfirmacion" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 8px; border: 1px solid #CBCBCB; margin: 50px auto; overflow: hidden;">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="Cancelar()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Confirmar</h4>
+                        </div>
+                        <div class="modal-body" id="CuerpoModal">
+                            <label>Está apunto de eliminar el Tipo Local, ¿Seguro(a) que desea continuar?</label>
+                        </div>
+                        <div class="modal-footer" id="PieModal">
+                            <input type="button" class="btn btn-success" value="Si" id="btnAceptar" />
+                            <input type="button" class="btn btn-danger" value="No" id="btnCerrar" />
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div id="ModalInfo" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Información</h4>
+                        </div>
+                        <div class="modal-body" id="CuerpoModal">
+                            <label>El Tipo Local ha sido eliminado</label>
+                        </div>
+                        <div class="modal-footer" style="text-align:center" id="PieModal">
+                            <input type="button" class="btn btn-success" value="Aceptar" id="btnAceptarId" />
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            }            
+        </div>
+        <div class="loading_body">
+            <div></div>
+        </div>
+        <p></p>
+        <p></p>
+    </div>
+</div>
+}
+@section Scripts{
+    @Styles.Render("~/Content/PanelPrincipal")
+}

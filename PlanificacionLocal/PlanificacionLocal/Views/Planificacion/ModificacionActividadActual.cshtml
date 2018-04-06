@@ -1,0 +1,83 @@
+﻿@model PlanificacionLocal.ModelView.ActView
+@{
+    ViewBag.Title = "Edición De Atividad Actual";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("ROLMDFI"))
+    {
+        <body>
+            <link href="~/Content/Estilo/actividad/Layout.css" rel="stylesheet" />
+            <script src="~/Scripts/Creados/Actividad/OpeMov.js"></script>
+            <script src="~/Scripts/Creados/Actividad/ValidacionActividad.js"></script>
+            <div class=".mensajesp_anunciarVal" data-accion="0"></div>
+            <input hidden id="TempDescDetaActInfoId" />
+            <input hidden id="TempDescActInfoId" />
+            <input hidden id="TempDescLocId" />
+            <input hidden id="TempDescLoc" />
+            Error, no se pede realizar la operación para la actividad :<span id="DescActInfoId"></span><br />de Tipo :<span id="TipoDesctActId"></span> para la fecha:<span id="FRealDesctActId"></span> !<br />
+            <div class="container" style="width:100%;height:150px;">
+                <div class="panel-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading" style="text-align:center">
+                            Horarios para la actividad seleccionada
+                        </div>
+                        <div class="panel-group">
+                            <form class="form-horizontal" style="margin:0 auto;">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding:10px 90px !Important;">
+                                                <label>Hora Inicio</label>
+                                                <input type="text" id="InfoHini" name="InfoHini" style="width:120px;" class="form-control" maxlength="7" onblur="validarTextoEspacios(this,2)" onkeypress="return textoValidoHora(event)" title="Dar click para cambiar la hora" />
+                                                <script type="text/javascript">
+                                                    $('#InfoHini').datetimepicker({
+                                                        format: 'LT',
+                                                        stepping: 30
+                                                    });                                                   
+                                                </script>
+                                            </td>
+                                            <td style="padding: 5px 20px !Important;">
+                                                <label>Hora Fin</label>
+                                                <input type="text" id="InfoHFin" name="InfoHFin" style="width:120px;" class="form-control" maxlength="7" onblur="validarTextoEspacios(this,2)"  onkeypress="return textoValidoHora(event)" title="Dar click para cambiar la hora" />
+                                                <script type="text/javascript">
+                                                    $('#InfoHFin').datetimepicker({
+                                                        format: 'LT',
+                                                        stepping: 30
+                                                    });                                                    
+                                                </script>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            Nota:
+            <br />Para poder mover la actividad debe tener un margen de una hora como mínimo, entre cada actividad existente en la fecha espesificada y ser distinto el horario  de:<br />
+            <fieldset>
+                <div class="infoDetaId" style="overflow-y:scroll;height:120px;">
+                    <table class="webgrid-table" id="ListaVerMov" style="display: table; border-collapse: collapse;border: solid #00c6ff;width:100%">
+                        <thead class="webgrid-header">
+                            <tr>
+                                <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">Actividad</th>
+                                <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">Local</th>
+                                <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">F. Realización</th>
+                                <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">H. Inicio</th>
+                                <th scope="col" style="padding: 0px; width: 200px; text-align: center; ">H. Fin</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button type="button" class="btn-success" style="border-radius: 5px;" title="Dar click para modificar la actividad seleccionada" onclick="oModAct()">Modificar</button>
+                <button type="button" class="btn-danger" style="border-radius: 5px;" onclick="InitCalendario()">Cerrar</button>
+            </div>
+        </body>
+    }
+}

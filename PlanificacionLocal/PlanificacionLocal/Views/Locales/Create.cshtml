@@ -1,0 +1,87 @@
+﻿@model PlanificacionLocal.Models.Local
+
+@{
+    ViewBag.Title = "Creación De Local";
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <div class="content-wrapper">
+        <section class="content-wrappercontenido main-content clear-fix">
+            <script src="~/Scripts/Creados/Catalogos/OpeCRUDLocal.js"></script>
+            <script src="~/Scripts/Creados/Catalogos/ValidacionLocal.js"></script>
+            <script src="~/Scripts/Jquery.LimiteCaracter_Plugin.js"></script>
+            <div class="panel panel-primary" style="min-width:750px">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">Creaci&oacute;n de cat&aacute;logo Local</h3>
+                </div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm("Create", "Locales", FormMethod.Post, new { id = "FrmLocal" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="capa">
+                                <h4>Datos espec&iacute;ficos</h4>
+                                <table>
+                                    <tbody>
+                                        @Html.ValidationSummary(true)
+                                        <tr>
+                                            <td>@Html.LabelFor(model => model.NumLocal, htmlAttributes: new { @class = "control-label " })</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.NumLocal, new { htmlAttributes = new { @class = "form-control mayuscula", style = "width:140px", maxlength = "10", onkeyup="javasript:this.value=this.value.toUpperCase()",onblur = "validarTextoEspacios(this,1)", onkeypress = "return validaTexto(event,0)" } })
+                                                @Html.ValidationMessageFor(model => model.NumLocal)
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.LabelFor(model => model.UnidadId, "Unidad", htmlAttributes: new { @class = "control-label " })</td>
+                                            <td>
+                                                @Html.DropDownList("UnidadId", null, "--Seleccione una Opción--",htmlAttributes: new { @class="form-control"})
+                                                @Html.ValidationMessageFor(model => model.UnidadId)
+                                            </td>
+                                            <td></td>
+                                            <td>@Html.LabelFor(model => model.TipoLocalId, "Tipo Local", new { @class = "control-label " })</td>
+                                            <td>
+                                                @Html.DropDownList("TipoLocalId", null, "--Seleccione una Opción--", htmlAttributes: new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.TipoLocalId)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.LabelFor(model => model.Descripcion,"Descripción", new { @class = "control-label " })</td>
+                                            <td>
+                                                @Html.TextAreaFor(model => model.Descripcion,  htmlAttributes : new { @class = "form-control", rows = "3", style = "overflow-y:scroll;resize:none;", maxlength = "255", onblur = "validarTextoEspacios(this,0)" } )
+                                                @Html.ValidationMessageFor(model => model.Descripcion)
+                                            </td>
+                                            <td></td>
+                                            <td>@Html.LabelFor(model => model.Capacidad, new { @class = "control-label " })</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Capacidad, new { htmlAttributes = new { @class = "form-control", onkeypress="return numero(event)"} })
+                                                @Html.ValidationMessageFor(model => model.Capacidad)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <div class="text-right">
+                                 <button type="button" id="btnGrabar" class="btn btn-primary btn-lg">Guardar</button>
+                                  <a href="@Url.Action("Index")" class="btn btn-default btn-lg">Salir</a>
+                            </div>
+                        }
+                  </div>
+            </div>
+            <input type="hidden" value="Locales" id="Controlador" />
+            <input type="hidden" value="Create" id="Accion" />
+            <div class="loading_body" style="display: none;"></div>
+        </section>
+    </div> 
+}
+   
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/PanelLocal")
+}
+
+  

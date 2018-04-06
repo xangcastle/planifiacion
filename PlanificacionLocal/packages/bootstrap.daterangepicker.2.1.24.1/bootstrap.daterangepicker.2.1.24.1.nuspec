@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>bootstrap.daterangepicker</id>
+    <version>2.1.24.1</version>
+    <title>Bootstrap Date Range Picker</title>
+    <authors>Miguel Román</authors>
+    <owners>Miguel Román</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/dangrossman/bootstrap-daterangepicker</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This date range picker component for Bootstrap creates a dropdown menu from which a user can select a range of dates. I created it while building the UI for Improvely, which needed a way to select date ranges for reports.
+
+Features include limiting the selectable date range, localizable strings and date formats, a single date picker mode, optional time picker (for e.g. making appointments or reservations), and styles that match the default Bootstrap 3 theme.
+
+Nuget Package Source Code: https://github.com/miguelerm/nuget-packages</description>
+    <summary>Date range picker component for Bootstrap http://www.daterangepicker.com/</summary>
+    <releaseNotes>Updated to version 2.1.24</releaseNotes>
+    <copyright>Copyright (c) 2012-2014 Dan Grossman. All rights reserved.</copyright>
+    <tags>Bootstrap DatePicker</tags>
+    <dependencies>
+      <dependency id="Moment.js" version="2.9.0" />
+    </dependencies>
+  </metadata>
+</package>
